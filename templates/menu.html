@@ -1,0 +1,206 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Menu - TastyGo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">TastyGo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'menu' %}">Menu</a></li>
+                <li class="nav-item"><a class="nav-link active" href="{% url 'order' %}">Order</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>            
+                <!-- ✅ Add these lines below -->
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'signup' %}">Sign Up</a></li>
+                {% endif %}
+            </ul>
+            
+        </div>
+    </div>
+</nav>
+
+<!-- Menu Section -->
+<section id="menu" class="container my-5">
+    <h2 class="text-center mb-4">Our Menu</h2>
+    <div class="row">
+        <!-- Menu Items -->
+        <div class="col-md-4">
+            <div class="card menu-item shadow-sm">
+                <img src="{% static 'images/7.jpeg' %}" class="card-img-top" alt="Pasta">
+                <div class="card-body">
+                    <h5 class="card-title">Creamy Pasta</h5>
+                    <p class="card-text">Rich and creamy pasta with a blend of fresh herbs. <strong>$100.99</strong></p>
+                    <button class="btn btn-primary order-btn" data-name="Creamy Pasta" data-price="12.99">Order Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card menu-item shadow-sm">
+                <img src="{% static 'images/8.jpeg' %}" class="card-img-top" alt="Burger">
+                <div class="card-body">
+                    <h5 class="card-title">Classic Burger</h5>
+                    <p class="card-text">Juicy burger with fresh veggies and special sauce. <strong>$200.99</strong></p>
+                    <button class="btn btn-primary order-btn" data-name="Classic Burger" data-price="10.99">Order Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card menu-item shadow-sm">
+                <img src="{% static 'images/3.jpeg' %}" class="card-img-top" alt="Salad">
+                <div class="card-body">
+                    <h5 class="card-title">Garden Fresh Salad</h5>
+                    <p class="card-text">A healthy salad made with local greens. <strong>$170.99</strong></p>
+                    <button class="btn btn-primary order-btn" data-name="Garden Fresh Salad" data-price="8.99">Order Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-4">
+            <div class="card menu-item shadow-sm">
+                <img src="{% static 'images/1.jpg' %}" class="card-img-top" alt="Pizza">
+                <div class="card-body">
+                    <h5 class="card-title">Cheese Pizza</h5>
+                    <p class="card-text">Wood-fired pizza with a blend of three cheeses. <strong>$150.99</strong></p>
+                    <button class="btn btn-primary order-btn" data-name="Cheese Pizza" data-price="14.99">Order Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-4">
+            <div class="card menu-item shadow-sm">
+                <img src="{% static 'images/2.jpg' %}" class="card-img-top" alt="Steak">
+                <div class="card-body">
+                    <h5 class="card-title">Grilled Steak</h5>
+                    <p class="card-text">Perfectly grilled steak served with mashed potatoes. <strong>$160.99</strong></p>
+                    <button class="btn btn-primary order-btn" data-name="Grilled Steak" data-price="18.99">Order Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-4">
+            <div class="card menu-item shadow-sm">
+                <img src="{% static 'images/9.jpeg' %}" class="card-img-top" alt="Dessert">
+                <div class="card-body">
+                    <h5 class="card-title">Chocolate Lava Cake</h5>
+                    <p class="card-text">Warm chocolate cake with molten center. <strong>$160.99</strong></p>
+                    <button class="btn btn-primary order-btn" data-name="Chocolate Lava Cake" data-price="6.99">Order Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-4">
+            <div class="card menu-item shadow-sm">
+                <img src="{% static 'images/10.jpg' %}" class="card-img-top" alt="Tacos">
+                <div class="card-body">
+                    <h5 class="card-title">Spicy Tacos</h5>
+                    <p class="card-text">Tacos filled with seasoned meat, salsa, and fresh veggies. <strong>$120.99</strong></p>
+                    <button class="btn btn-primary order-btn" data-name="Spicy Tacos" data-price="11.99">Order Now</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mt-4">
+            <div class="card menu-item shadow-sm">
+                <img src="{% static 'images/11.jpg' %}" class="card-img-top" alt="Noodles">
+                <div class="card-body">
+                    <h5 class="card-title">Hakka Noodles</h5>
+                    <p class="card-text">Stir-fried noodles with vegetables and soy sauce. <strong>$100.99</strong></p>
+                    <button class="btn btn-primary order-btn" data-name="Hakka Noodles" data-price="9.99">Order Now</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mt-4">
+            <div class="card menu-item shadow-sm">
+                <img src="{% static 'images/12.jpg' %}" class="card-img-top" alt="Ice Cream">
+                <div class="card-body">
+                    <h5 class="card-title">Vanilla Ice Cream</h5>
+                    <p class="card-text">Classic vanilla ice cream served with sprinkles. <strong>$180.99</strong></p>
+                    <button class="btn btn-primary order-btn" data-name="Vanilla Ice Cream" data-price="5.99">Order Now</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<!-- Orders Section -->
+<section id="orders" class="container my-5">
+    <h2 class="text-center mb-4">Your Orders</h2>
+    <ul id="order-list" class="list-group"></ul>
+    <p id="total-price" class="mt-3"><strong>Total: $0.00</strong></p>
+    <a href="{% url 'order' %}" class="btn btn-primary">Checkout</a>
+</section>
+
+<!-- Footer (Updated Alignment) -->
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    <div class="container">
+        <p>&copy; 2024 Savory Delights | All Rights Reserved</p>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+        function updateOrderList() {
+            const orderList = document.getElementById("order-list");
+            const totalPriceElement = document.getElementById("total-price");
+            orderList.innerHTML = "";
+            let totalPrice = 0;
+
+            orders.forEach((order, index) => {
+                const li = document.createElement("li");
+                li.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+                li.innerHTML = `${order.name} - $${order.price}
+                    <button class="btn btn-danger btn-sm remove-btn" data-index="${index}">Remove</button>`;
+                orderList.appendChild(li);
+                totalPrice += parseFloat(order.price);
+            });
+
+            totalPriceElement.innerHTML = `<strong>Total: $${totalPrice.toFixed(2)}</strong>`;
+            localStorage.setItem("orders", JSON.stringify(orders));
+        }
+
+        document.querySelectorAll(".order-btn").forEach(button => {
+            button.addEventListener("click", function () {
+                orders.push({ name: this.dataset.name, price: this.dataset.price });
+                updateOrderList();
+            });
+        });
+
+        document.getElementById("order-list").addEventListener("click", function (e) {
+            if (e.target.classList.contains("remove-btn")) {
+                orders.splice(e.target.dataset.index, 1);
+                updateOrderList();
+            }
+        });
+
+        document.getElementById("checkout").addEventListener("click", function () {
+            if (orders.length === 0) {
+                alert("Your order list is empty!");
+            } else {
+                localStorage.setItem("orders", JSON.stringify(orders));
+                window.location.href = "order.html"; // Redirect to checkout page
+            }
+        });
+
+        updateOrderList();
+    });
+</script>
+
+</body>
+</html>

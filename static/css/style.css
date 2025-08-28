@@ -1,0 +1,55 @@
+/* Hero Section */
+.hero-section {
+    background: url('https://images.unsplash.com/photo-1498654896293-37aacf113fd9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNzE5fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=1400') center/cover no-repeat;
+    height: 100vh;
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+
+.hero-section p {
+    font-size: 1.4rem;
+}
+
+/* Navbar */
+.navbar-dark .navbar-brand {
+    color: #FFD700;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    color: #FFFFFF !important;
+}
+
+.navbar-nav .nav-link.active {
+    color: #FFD700 !important;
+}
+
+/* Footer Section */
+.footer-section {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+}
+
+.footer-section .social-link img {
+    width: 40px;
+    margin: 0 10px;
+}
+
+/* Menu Section */
+.menu-item img {
+    height: 250px;
+    object-fit: cover;
+}
+
+.menu-item .card-title {
+    color: #333;
+}
+
+.menu-item .btn-primary {
+    background-color: #FFD700;
+    border: none;
+}

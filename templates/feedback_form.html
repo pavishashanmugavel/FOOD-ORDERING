@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit Feedback</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">We Value Your Feedback</h2>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="id_name" class="form-label">Your Name</label>
+            {{ form.name|as_widget(attrs={'class': 'form-control', 'placeholder': 'Enter your name'}) }}
+        </div>
+        <div class="mb-3">
+            <label for="id_email" class="form-label">Your Email</label>
+            {{ form.email|as_widget(attrs={'class': 'form-control', 'placeholder': 'Enter your email'}) }}
+        </div>
+        <div class="mb-3">
+            <label for="id_message" class="form-label">Your Feedback</label>
+            {{ form.message|as_widget(attrs={'class': 'form-control', 'placeholder': 'Please share your thoughts...', 'rows': 4}) }}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Feedback</button>
+    </form>
+</div>
+</body>
+</html>

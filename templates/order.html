@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TastyGo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+    <style>
+        .navbar-brand {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            background: linear-gradient(45deg, #ff007f, #ff9900, #ff5733);
+            background-size: 200% 200%;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: glitter 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">TastyGo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'menu' %}">Menu</a></li>
+                <li class="nav-item"><a class="nav-link active" href="{% url 'order' %}">Order</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+            
+                <!-- ✅ Add these lines below -->
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'signup' %}">Sign Up</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Order Form Section -->
+<section class="reservation-section">
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Place an Order</h2>
+        <form class="reservation-form mx-auto" style="max-width: 600px;" method="POST">
+            {% csrf_token %}
+
+            <!-- Contact Information -->
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" name="phone" required>
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" id="address" name="address" required>
+            </div>
+
+            <!-- Item and Quantity -->
+            <div class="mb-3">
+                <label for="item" class="form-label">Item Name</label>
+                <input type="text" class="form-control" id="item" name="item_name" required>
+            </div>
+            <div class="mb-3">
+                <label for="quantity" class="form-label">Quantity</label>
+                <input type="number" class="form-control" id="quantity" name="quantity" required>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary w-100">Order Now</button>
+        </form>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer-section text-center mt-5">
+    <a href="#" class="social-link"><img src="https://img.icons8.com/color/48/facebook-new.png" alt="Facebook"></a>
+    <a href="#" class="social-link"><img src="https://img.icons8.com/color/48/instagram-new.png" alt="Instagram"></a>
+    <a href="#" class="social-link"><img src="https://img.icons8.com/color/48/twitter-circled.png" alt="Twitter"></a>
+    <p>&copy; 2025 TastyGo | All Rights Reserved</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
